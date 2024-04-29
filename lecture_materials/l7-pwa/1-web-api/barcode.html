@@ -1,0 +1,32 @@
+<img src="code-39.png" id="code-39"><br>
+<img src="qr-code.png" id="qr-code">
+<textarea rows="10" cols="50"></textarea>
+<button onclick="decode('code-39')">code 1</button>
+<button onclick="decode('qr-code')">code 2</button>
+
+<script>
+    const textarea = document.getElementsByTagName("textarea")[0];
+    let barcodeDetector;
+
+    if (!("BarcodeDetector" in globalThis)) {
+        textarea.innerHTML = "Barcode Detector is not supported by this browser.";
+    } else {
+        textarea.innerHTML = "Barcode Detector supported!";
+
+        // create new detector
+        barcodeDetector = new BarcodeDetector({
+            formats: ["code_39", "qr_code"],
+        });
+    }
+
+    function decode(id) {
+        barcodeDetector
+            .detect(document.getElementById(id))
+            .then((barcodes) => {
+                barcodes.forEach((barcode) => { textarea.innerHTML = barcode.rawValue });
+            })
+            .catch((err) => {
+                textarea.innerHTML = `Error: ${err}`;
+            });
+    }
+</script>

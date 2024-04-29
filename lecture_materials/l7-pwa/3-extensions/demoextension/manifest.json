@@ -1,0 +1,15 @@
+{
+  "manifest_version": 3,
+  "name": "webtech",
+  "version": "1.0.0",
+  "action":{
+    "default_popup": "index.html",
+    "default_title": "WebTech 2024 Browser App"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://news.itmo.ru/*"],
+      "js": ["Content.js"]
+    }
+  ]
+}

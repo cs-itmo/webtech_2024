@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<button onclick="enable()">Enable notifications</button>
+<button onclick="notify()">Notify</button>
+<textarea rows="5" cols="5"></textarea>
+
+<script>
+    function enable() {
+        Notification.requestPermission().then((result) => {
+            document.getElementsByTagName("textarea")[0].innerHTML = result;
+        });
+    }
+    function notify() {
+        const img = "bell.png";
+        const text = `Wake up!`;
+        const notification = new Notification("!!!!", { body: text, icon: img });
+    }
+</script>

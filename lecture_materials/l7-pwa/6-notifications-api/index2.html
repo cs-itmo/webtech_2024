@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<script>
+    navigator.serviceWorker.register('sw2.js')
+        .then(reg => console.log('SW registered!', reg))
+        .catch(err => console.log('Error!', err));
+
+    Notification.requestPermission().then((result) => {
+        console.log("granted");
+    });
+
+</script>
